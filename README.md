@@ -9,7 +9,7 @@ This is the VR Sensor data processor project. The project mainly run the MQTT br
     python -m venv env_name
  ```
 
- ## Activate the created virtual environment first open command terminal from your computer and goto to the project directory using cd command and then using below command
+ Activate the created virtual environment first open command terminal from your computer and goto to the project directory using cd command and then using below command
 
  ```
     env_name\Scripts\activate
@@ -41,10 +41,16 @@ python manage.py makemigrations
     client.tls_set("E:\\Germany File\\Martin Becker\\projects\\vr_data_processor\\vr_data_processor\\datasource\\certificate\\client_cert.cer" , tls_version=ssl.PROTOCOL_TLSv1_2)
  ```
 
- Now you can run the project by run this below code 
+ Now you can run the project by run this below code in two way eigther specific port or withour mentioning port .
+  Here 8081 is port number that this project will run on this port. Don't use any port number that is engased by another application.
 
  ```
     python manage.py runserver
+
+    or
+
+    python manage.py runserver 8081 
+
  ```
 
 After successfully run the application . you project will run on a ip address that you will see after run the project . now you can open you browser and the webpage . after open 

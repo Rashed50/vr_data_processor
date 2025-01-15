@@ -1,4 +1,5 @@
 
+import random
 import paho.mqtt.client as mqtt
 import ssl, time, inspect, os
 #from appdata.models import VRModel
@@ -17,18 +18,37 @@ def on_message(client, userdata, message):
     payload = message.payload
     print(f'\n 1.Received message on_message() {topic}====== {payload},')
     storeIncomingData2(topic,payload)
-    
-    
+     
 
 
 def storeIncomingData2(topic,payload): 
     payload = json.loads(payload) # extraction json     
     print(f'\n 2.Received message for storing in database ====== topic: {topic} with payload:{payload} ')
 
-    session_id = payload['session_id'] # random.randrange(1111,9999)
-    frame_number =  payload['frame_number'] # random.randrange(99999,999999)
-    timestamp =  payload['timestamp'] # time.time()
-    msg =   payload['msg']
+    if 'session_id' not in payload:
+        session_id =  random.randrange(1111,9999)
+    else:
+        session_id = payload['session_id']  
+    
+    if 'frame_number' not in payload:
+        frame_number =  random.randrange(99999,999999)
+    else:
+        frame_number = payload['frame_number'] 
+    
+    if 'timestamp' not in payload:
+        timestamp =  random.randrange(99999,999999)
+    else:
+        timestamp = payload['timestamp'] 
+
+    if 'msg' not in payload:
+        msg =  random.randrange(99999,999999)
+    else:
+        msg = payload['msg'] 
+
+  
+    # frame_number =  payload['frame_number'] # random.randrange(99999,999999)
+    # timestamp =  payload['timestamp'] # time.time()
+    # msg =   payload['msg']
 
 #     sensor_data = {
 #     "incoming_message":msg,
@@ -48,6 +68,7 @@ def storeIncomingData2(topic,payload):
     #sensor_data = json.dumps(sensor_data)
     #data = VRModel(sessionId= session_id,frameNumber=frame_number,topic=topic,message= msg)
     data = VRModel.objects.create(sessionId=session_id,frameNumber=frame_number,timestamp=timestamp,topic=topic,sensorData=msg) # ORM system 
+    print('successfully completed')
 
 
 def startMQTTBroker():
