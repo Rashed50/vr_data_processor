@@ -38,7 +38,7 @@ def storeIncomingData2(topic,payload):
 #     "HeadDevicePosition": "(0.00, 0.00, 0.00)"
 #     }
 
-#    "msg": "this is testing message from mqttx app oooooo",
+#   "msg": "this is testing message from mqttx app oooooo",
 #   "session_id" : "546464646",
 #   "frame_number" : 6549671763,
 #   "timestamp" : 1734351949

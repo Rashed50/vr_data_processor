@@ -40,3 +40,14 @@ python manage.py makemigrations
  ```
     python manage.py runserver
  ```
+
+After successfully run the application . you project will run on a ip address that you will see after run the project . now you can open you browser and the webpage . after open 
+web browser MQTT Broker will be ready to receive message. MQTT subscribed topic name is "vrsensors". That means if you publish message in this topic name from any other mqtt broker application my project will recive that published message. The message format is as like and all these for mentory information field that you have publish and my MQTT broker is ready to that format otherwise will show error when parsing the receiving message.
+
+```
+   "msg": "this is testing message from mqttx other application",
+   "session_id" : "546464646",
+   "frame_number" : 6549671763,
+   "timestamp" : 1734351949
+
+```
