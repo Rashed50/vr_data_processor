@@ -35,14 +35,20 @@ python manage.py makemigrations
  ```
 
 
- finally you are ready to run the project
+ finally you are ready to run the project. But one think need to keep in mind that mqtt broker will connect with server using SSL certificate so you have to confirm the certificate  location correctly. You have to update that path as per your project location below code inside the mqtt_tls_broker.py file .
+
+ ```
+    client.tls_set("E:\\Germany File\\Martin Becker\\projects\\vr_data_processor\\vr_data_processor\\datasource\\certificate\\client_cert.cer" , tls_version=ssl.PROTOCOL_TLSv1_2)
+ ```
+
+ Now you can run the project by run this below code 
 
  ```
     python manage.py runserver
  ```
 
 After successfully run the application . you project will run on a ip address that you will see after run the project . now you can open you browser and the webpage . after open 
-web browser MQTT Broker will be ready to receive message. MQTT subscribed topic name is "vrsensors". That means if you publish message in this topic name from any other mqtt broker application my project will recive that published message. The message format is as like and all these for mentory information field that you have publish and my MQTT broker is ready to that format otherwise will show error when parsing the receiving message.
+web browser MQTT Broker will be ready to receive message. MQTT subscribed topic name is "vrsensors". That means if you publish message in this topic name from any other mqtt broker application my project will recive that published message. The message json format is as like and all these fields are  mentory information  that you have publish and my MQTT broker is ready to that format otherwise will show error when parsing the receiving message.
 
 ```
    "msg": "this is testing message from mqttx other application",
